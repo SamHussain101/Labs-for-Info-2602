@@ -46,4 +46,39 @@ async def add(a: int, b: int):
         "b": b,
         "result": a + b
     }
+
+@app.get("/subtract/{a}/{b}")
+async def subtract(a: int, b: int):
+    return {
+        "operation": "subtract",
+        "a": a,
+        "b": b,
+        "result": a - b
+    }
+
+
+@app.get("/multiply/{a}/{b}")
+async def multiply(a: int, b: int):
+    return {
+        "operation": "multiply",
+        "a": a,
+        "b": b,
+        "result": a * b
+    }
+
+
+@app.get("/divide/{a}/{b}")
+async def divide(a: int, b: int):
+    if b == 0:
+        return {
+            "error": "Division by zero is not allowed"
+        }
+
+    return {
+        "operation": "divide",
+        "a": a,
+        "b": b,
+        "result": a / b
+    }
+
     
